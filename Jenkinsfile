@@ -15,8 +15,14 @@
                 stage('Compile with slave1'){
                     agent {label 'slave1'}
                     steps{
-                        echo 'compiling...'
-                        sh 'mvn compile'
+                       echo 'compiling on slave1...'
+                       sh '''
+                           echo "=== Compilation Environment ==="
+                           echo "JAVA_HOME: $JAVA_HOME"
+                           mvn --version
+                           echo "=== Starting Maven Compile ==="
+                           mvn clean compile
+                       '''
                 }
                 }
                 stage('CodeReview with slave1'){
