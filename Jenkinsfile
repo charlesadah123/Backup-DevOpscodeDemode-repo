@@ -22,7 +22,7 @@
                            mvn --version
                            echo "=== Starting Maven Compile ==="
                            export MAVEN_OPTS="-Xmx1024m"
-                           mvn clean compile pmd:pmd
+                           mvn clean compile pmd:pmd -Dpmd.threads=1
                        '''
                 }
                 }
