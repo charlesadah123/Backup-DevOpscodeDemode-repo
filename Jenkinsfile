@@ -21,7 +21,7 @@
                            echo "JAVA_HOME: $JAVA_HOME"
                            mvn --version
                            echo "=== Starting Maven Compile ==="
-                           export MAVEN_OPTS="-Xmx1024m"
+                           export MAVEN_OPTS="-Xmx1536m"
                            mvn clean compile pmd:pmd -Dpmd.threads=1
                        '''
                 }
