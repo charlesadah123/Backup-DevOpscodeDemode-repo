@@ -21,20 +21,21 @@
                            echo "JAVA_HOME: $JAVA_HOME"
                            mvn --version
                            echo "=== Starting Maven Compile ==="
-                           mvn clean compile
+                           export MAVEN_OPTS="-Xmx1024m"
+                           mvn clean compile pmd:pmd
                        '''
                 }
                 }
-                stage('CodeReview with slave1'){
-                    agent {label 'slave1'}
-                    steps{
+               // stage('CodeReview with slave1'){
+               //     agent {label 'slave1'}
+               //     steps{
                     
-                echo 'codeReview...'
-                        sh '''
-                        export MAVEN_OPTS="-Xmx1024m"   # Give Maven 1GB of RAM
-                        mvn pmd:pmd'''
-                    }
-                }
+               // echo 'codeReview...'
+               //         sh '''
+               //         export MAVEN_OPTS="-Xmx1024m"   # Give Maven 1GB of RAM
+               //         mvn pmd:pmd'''
+               //     }
+               // }
                 stage('UnitTest with slave2'){
                     agent {label 'slave2'}
                     steps{
