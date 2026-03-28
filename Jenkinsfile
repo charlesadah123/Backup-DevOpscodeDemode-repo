@@ -30,7 +30,9 @@
                     steps{
                     
                 echo 'codeReview...'
-                        sh 'mvn pmd:pmd'
+                        sh '''
+                        export MAVEN_OPTS="-Xmx1024m"   # Give Maven 1GB of RAM
+                        mvn pmd:pmd'''
                     }
                 }
                 stage('UnitTest with slave2'){
