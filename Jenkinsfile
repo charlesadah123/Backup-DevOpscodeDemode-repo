@@ -53,7 +53,7 @@
                 label 'master'
             }
             steps {
-                echo 'Packaging...'
+                echo 'Successfully Packaging...'
                 sh 'mvn package'
             }
         }
